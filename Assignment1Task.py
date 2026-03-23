@@ -1,7 +1,7 @@
 import threading
 import time
 import random
-#this is a experiment to test my github
+#this is a test to test my github
 #I will rewrite the following code
 from printDoc import printDoc
 from printList import printList
