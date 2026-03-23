@@ -77,6 +77,7 @@ for t in self.mThreads:
             print(f"Printer {printerID} waiting, queue empty...")
             self.outer.queue_not_empty.wait()
             self.outer.print_list.queuePrint(printerID)
+            self.outer.queue_size -= 1
 
     # Machine class
     class machineThread(threading.Thread):
