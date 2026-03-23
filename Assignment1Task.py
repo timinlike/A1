@@ -96,5 +96,8 @@ for t in self.mThreads:
             print(f"Machine {id} Sent a print request")
             # Build a print document
             doc = printDoc(f"My name is machine {id}", id)
-            # Insert it in the print queue
+           with self.outer.queue_lock:
+          # Insert it in the print queue
+          while self.outer.queue_size >= self.outer.NUM_PRINTERS:
+            print(f"Machine {id} waiting, queue full...")
             self.outer.print_list.queueInsert(doc)
