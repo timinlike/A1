@@ -71,6 +71,7 @@ for t in self.mThreads:
 
         def printDox(self, printerID):
             print(f"Printer ID: {printerID} : now available")
+             with self.outer.queue_lock:
             # Print from the queue
             self.outer.print_list.queuePrint(printerID)
 
