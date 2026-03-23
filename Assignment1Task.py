@@ -73,6 +73,9 @@ for t in self.mThreads:
             print(f"Printer ID: {printerID} : now available")
              with self.outer.queue_lock:
             # Print from the queue
+           while self.outer.queue_size == 0:
+            print(f"Printer {printerID} waiting, queue empty...")
+            self.outer.queue_not_empty.wait()
             self.outer.print_list.queuePrint(printerID)
 
     # Machine class
